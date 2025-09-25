@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      width: 320px;
+      padding: 16px;
+      margin: 0;
+      background: #f8f8f8;
+    }
+    h3 {
+      margin: 0 0 16px 0;
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 14px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 12px;
+      padding: 8px;
+      font-size: 13px;
+      color: #333;
+      background: white;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      min-height: 20px;
+      display: none;
+    }
+    #status.show {
+      display: block;
+    }
+    #status.error {
+      color: #d32f2f;
+      border-color: #ffcdd2;
+      background: #ffebee;
+    }
+    #status.success {
+      color: #388e3c;
+      border-color: #c8e6c9;
+      background: #e8f5e9;
+    }
+    .instructions {
+      margin-top: 16px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .instructions strong {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h3>Slemex - Slack Emoji Exporter</h3>
+  <div class="subtitle">Export all custom emojis from your Slack workspace</div>
+
+  <button id="exportBtn">Download Emojis as ZIP</button>
+
+  <div id="status"></div>
+
+  <div class="instructions">
+    <strong>Instructions:</strong><br>
+    1. Navigate to your Slack emoji page<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(workspace.slack.com/customize/emoji)<br>
+    2. Click the button above to download all emojis<br>
+    3. The file will be named: slemex-[workspace].zip
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
