@@ -43,7 +43,6 @@ slemex/
 ├── popup.html           # Extension popup UI
 ├── popup.js             # Popup functionality
 ├── jszip.min.js         # ZIP library
-├── create_icons.html    # Icon generator (for development)
 └── README.md           # This file
 ```
 
