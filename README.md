@@ -1,5 +1,9 @@
 # Slemex - Slack Emoji Exporter
 
+<div style="text-align: center">
+<img src="icon128.png" alt="Slemex Icon" width="128" height="128">
+</div>
+
 A Chrome extension that exports all custom emojis from your Slack workspace as a ZIP file.
 
 ## Features
