@@ -70,7 +70,7 @@ You can:
 ## Contact
 
 For questions about this Privacy Policy or the Extension, please create an issue at:
-https://github.com/[your-username]/slemex
+https://github.com/valkev/slemex
 
 ## Compliance
 
