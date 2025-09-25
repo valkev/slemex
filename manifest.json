@@ -8,6 +8,9 @@
     "scripting",
     "storage"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "web_accessible_resources": [
     {
       "resources": ["jszip.min.js"],
@@ -21,11 +24,12 @@
     }
   ],
   "host_permissions": [
-    "https://*.slack.com/*"
+    "https://*.slack.com/*",
+    "https://*.slack-edge.com/*"
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Slemex - Export Slack Emojis"
+    "default_title": "Slemex - Slack Emoji Exporter"
   },
   "icons": {
     "16": "icon16.png",

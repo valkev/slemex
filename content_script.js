@@ -11,12 +11,45 @@
   const workspaceName = location.hostname.split('.')[0];
   const baseName = `slemex-${workspaceName}`;
 
-  // Function to fetch image as blob using fetch API (works with CORS)
+  // Function to fetch image as blob using background script to bypass CORS
   async function fetchImageAsBlob(url) {
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Failed to fetch ${url}`);
-      return await response.blob();
+      return new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage(
+          { action: 'fetchImage', url: url },
+          response => {
+            if (chrome.runtime.lastError) {
+              console.error('Chrome runtime error:', chrome.runtime.lastError);
+              reject(new Error(chrome.runtime.lastError.message));
+              return;
+            }
+
+            if (!response || !response.success) {
+              const errorMsg = response?.error || 'Unknown error fetching image';
+              console.error('Error fetching image:', url, errorMsg);
+              reject(new Error(errorMsg));
+              return;
+            }
+
+            // Convert base64 back to blob
+            const binaryString = atob(response.data);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+              bytes[i] = binaryString.charCodeAt(i);
+            }
+
+            // Determine mime type from URL
+            let mimeType = 'image/png';
+            if (url.includes('.gif')) mimeType = 'image/gif';
+            else if (url.includes('.jpg') || url.includes('.jpeg')) mimeType = 'image/jpeg';
+            else if (url.includes('.webp')) mimeType = 'image/webp';
+            else if (url.includes('.svg')) mimeType = 'image/svg+xml';
+
+            const blob = new Blob([bytes], { type: mimeType });
+            resolve(blob);
+          }
+        );
+      });
     } catch (err) {
       console.error('Error fetching image:', url, err);
       throw err;
