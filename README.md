@@ -11,6 +11,10 @@ A Chrome extension that exports all custom emojis from your Slack workspace as a
 
 ## Installation
 
+### For usage
+
+Download the extension from the Chrome Web Store.
+
 ### For Development
 
 1. Open Chrome and navigate to `chrome://extensions/`
