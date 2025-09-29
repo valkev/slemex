@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Slemex - Slack Emoji Exporter",
+  "version": "1.0.0",
+  "description": "Download all custom emojis from your Slack workspace as a ZIP file.",
+  "permissions": [
+    "activeTab",
+    "https://*.slack.com/*",
+    "https://*.slack-edge.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "jszip.min.js"
+  ],
+  "content_scripts": [
+    {
+      "js": ["jszip.min.js", "content_script.js"],
+      "matches": ["https://*.slack.com/customize/emoji*"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Slemex - Slack Emoji Exporter"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
