@@ -5,8 +5,7 @@
   "description": "Download all custom emojis from your Slack workspace as a ZIP file.",
   "permissions": [
     "activeTab",
-    "scripting",
-    "storage"
+    "scripting"
   ],
   "background": {
     "service_worker": "background.js"
